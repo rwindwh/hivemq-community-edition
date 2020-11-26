@@ -84,7 +84,6 @@ public class InternalConfigurations {
     public static int MAX_INFLIGHT_WINDOW_SIZE = 50;
 
 
-
     //The maximum allowed size of the passed value for the ConnectionAttributeStore in bytes
     public static final int CONNECTION_ATTRIBUTE_STORE_MAX_VALUE_SIZE = 10240; //10Kb
 
@@ -106,7 +105,6 @@ public class InternalConfigurations {
     public static final boolean XODUS_PERSISTENCE_ENVIRONMENT_DURABLE_WRITES = false;
     // The the memory limit used by the xodus environments in percentage of the JVM heap (Xmx).
     public static final int XODUS_PERSISTENCE_LOG_MEMORY_PERCENTAGE = 25;
-
 
 
     // The amount of publishes that are polled per batch
@@ -195,10 +193,10 @@ public class InternalConfigurations {
     public static final int SHARED_SUBSCRIPTION_CACHE_SIZE = 10000;
 
     //The memory that is used for rocksdb memtable as a portion of the RAM for the retained message persistence. (size = RAM/configValue)
-    public static final int PAYLOAD_PERSISTENCE_MEMTABLE_SIZE_PORTION = 32;
+    public static final AtomicInteger PAYLOAD_PERSISTENCE_MEMTABLE_SIZE_PORTION = new AtomicInteger(32);
 
     //The memory that is used for rocksdb block-cache as a portion of the RAM for the retained message persistence. (size = RAM/configValue)
-    public static final int PAYLOAD_PERSISTENCE_BLOCK_CACHE_SIZE_PORTION = 64;
+    public static final AtomicInteger PAYLOAD_PERSISTENCE_BLOCK_CACHE_SIZE_PORTION = new AtomicInteger(64);
 
     //The block size used by rocksdb for the retained message persistence in bytes
     public static final int PAYLOAD_PERSISTENCE_BLOCK_SIZE = 32 * 1024;
@@ -259,7 +257,7 @@ public class InternalConfigurations {
     public static boolean EXPIRE_INFLIGHT_MESSAGES = false;
 
     /**
-     *  pubrels are removed after the message expiry.
+     * pubrels are removed after the message expiry.
      */
     public static boolean EXPIRE_INFLIGHT_PUBRELS = false;
 
